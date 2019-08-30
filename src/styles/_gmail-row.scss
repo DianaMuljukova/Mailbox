@@ -1,0 +1,124 @@
+.gmail-row {
+  padding: 8px;
+
+  &__left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    display: flex;
+    color: #FF5722;
+    align-items: center;
+    margin-left: 32px;
+    box-sizing: border-box;
+
+    a {
+      color: #FF5722;
+      display: block;
+      padding: 11px;
+      position: relative;
+
+      i {
+        position: absolute;
+        top:0;
+        left: 50%;
+      }
+    }
+  }
+
+  &__config {
+    display: flex;
+
+    .link-left {
+      display: block;
+      background: #ECEFF1;
+      width: 40px;
+      height: 32px;
+      margin-right: 16px;
+      position: relative;
+
+      &:first-child {
+        width: 64px;
+      }
+
+      i {
+        color: #9E9E9E;
+        position: absolute;
+      }
+
+      .fa-square {
+        top: 50%;
+        left: 15%;
+        transform: translateY(-50%);
+      }
+
+      .fa-sort-down {
+        top: 40%;
+        right: 15%;
+        transform: translateY(-50%);
+      }
+
+      .fa-spinner {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .fa-ellipsis-v {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .link-right {
+      display: block;
+      background: #ECEFF1;
+      width: 40px;
+      height: 32px;
+      margin-right: 16px;
+      position: relative;
+
+      &:last-child {
+        width: 64px;
+      }
+
+      i {
+        color: #9E9E9E;
+        position: absolute;
+      }
+
+      .fa-cog {
+        top: 50%;
+        left: 15%;
+        transform: translateY(-50%);
+      }
+
+      .fa-sort-down {
+        top: 40%;
+        right: 15%;
+        transform: translateY(-50%);
+      }
+
+      .fa-chevron-left {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .fa-chevron-right {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
