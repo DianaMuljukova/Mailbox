@@ -2,6 +2,7 @@
 @import "mixins";
 @import "header";
 @import "gmail-row";
+@import "content";
 
 * {
   box-sizing: border-box;
@@ -15,6 +16,7 @@ html, body {
 
 a {
   color: #9E9E9E;
+  text-decoration: none;
 }
 
 .container {

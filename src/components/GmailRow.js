@@ -14,7 +14,7 @@ const GmailRow = () => {
                         </div>
 
                         <div className="gmail-row__config">
-                            <a href="#" className="square link-left">
+                            <a href="#" className="square link link-left">
                                     <a href="">
                                         <i className="far fa-square"></i>
                                     </a>
@@ -22,24 +22,24 @@ const GmailRow = () => {
                                         <i className="fas fa-sort-down"></i>
                                     </a>
                             </a>
-                            <a href="#" className="sort-down link-left">
+                            <a href="#" className="sort-down link">
                                 <i className="fas fa-spinner"></i>
                             </a>
-                            <a href="#" className="link-left">
+                            <a href="#" className="link">
                                 <i className="fas fa-ellipsis-v"></i>
                             </a>
                         </div>
                     </div>
                     <div className="col-xl-5 gmail-row__right">
                         <div className="gmail-row__config">
-                            <a href="#" className="square link-right">
+                            <a href="#" className="square link">
                                 <i className="fas fa-chevron-left"></i>
                             </a>
-                            <a href="#" className="sort-down link-right">
+                            <a href="#" className="sort-down link">
                                 <i className="fas fa-chevron-right"></i>
                             </a>
 
-                            <a href="#" className="square link-right">
+                            <a href="#" className="square link link-right">
                                 <a href="">
                                     <i className="fas fa-cog"></i>
                                 </a>

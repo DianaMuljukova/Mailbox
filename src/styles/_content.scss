@@ -1,0 +1,129 @@
+.content {
+  padding: 16px 0 35px;
+
+  &__menu {
+
+    button {
+      background-color: #FF5722;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 14px;
+      color: white;
+      border: 0;
+      padding: 14px 30px 14px 15px;
+      border-radius: 5px;
+      width: 100%;
+
+      i {
+        margin-right: 70px;
+      }
+      p {
+        margin: 0;
+      }
+    }
+
+    .button-block {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__list {
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.54);
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 12px 0px 12px 20px;
+      box-sizing: border-box;
+
+      &:hover {
+        color: rgba(0, 0, 0, 0.87);
+        border-left: 5px solid #FF5722;
+        box-sizing: border-box;
+        padding-left: 15px;
+        cursor: pointer;
+      }
+
+      &:last-child {
+        border-top: 1px solid rgba(16, 65, 87, 0.08);
+        border-bottom: 1px solid rgba(16, 65, 87, 0.08);
+        margin-top: 40px;
+
+        i {
+          margin-left: 70px;
+        }
+      }
+    }
+  }
+}
+
+.content-messages {
+  &__row {
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    a {
+      display: block;
+      padding: 10px;
+      background-color: #ECEFF1;
+      border: 1px solid rgba(16, 65, 87, 0.08);
+      transition: 0.3s;
+
+      &:hover {
+        padding-top: 6px;
+        border-top: 5px solid blue;
+        font-weight: 500;
+        color: black;
+      }
+    }
+  }
+
+  &__categories {
+    display: flex;
+
+    a {
+      padding: 10px 35px 10px 15px;
+    }
+
+    i {
+      margin-right: 15px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #ECEFF1;
+    padding: 10px;
+    align-items: center;
+
+    .author {
+      display: flex;
+      align-items: center;
+
+      i {
+        margin: 5px 10px;
+        font-size: 20px;
+        color: #9E9E9E;
+      }
+
+      span {
+        margin-left: 16px;
+      }
+    }
+
+    .text {
+      display: flex;
+      align-items: center;
+
+      i {
+        font-size: 5px;
+        margin: 0 5px;
+      }
+    }
+  }
+}

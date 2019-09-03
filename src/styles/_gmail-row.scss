@@ -1,10 +1,12 @@
 .gmail-row {
   padding: 8px;
+  border-bottom: 1px solid rgba(16, 65, 87, 0.08);
 
   &__left {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
   }
 
   &__title {
@@ -31,17 +33,17 @@
   &__config {
     display: flex;
 
-    .link-left {
+    .link {
       display: block;
       background: #ECEFF1;
       width: 40px;
       height: 32px;
       margin-right: 16px;
       position: relative;
+      border-radius: 5px;
+      border: 1px solid #9E9E9E;
 
-      &:first-child {
-        width: 64px;
-      }
+
 
       i {
         color: #9E9E9E;
@@ -73,23 +75,6 @@
       }
     }
 
-    .link-right {
-      display: block;
-      background: #ECEFF1;
-      width: 40px;
-      height: 32px;
-      margin-right: 16px;
-      position: relative;
-
-      &:last-child {
-        width: 64px;
-      }
-
-      i {
-        color: #9E9E9E;
-        position: absolute;
-      }
-
       .fa-cog {
         top: 50%;
         left: 15%;
@@ -113,12 +98,24 @@
         left: 50%;
         transform: translate(-50%, -50%);
       }
-    }
+
   }
 
   &__right {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+  }
+}
+
+.link-left {
+  &:first-child {
+    width: 64px;
+  }
+}
+
+.link-right {
+  &:last-child {
+    width: 64px;
   }
 }
