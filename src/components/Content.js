@@ -6,7 +6,7 @@ const Content = () => {
     return (
         <section className="content">
             <div className="container">
-                <div className="row">
+                <div className="row content__row">
                     <ContentMenu/>
                     <ContentGmail/>
                 </div>
