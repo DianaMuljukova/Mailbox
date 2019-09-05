@@ -1,21 +1,29 @@
-import React, {useState} from 'react';
-import index from "postcss-normalize";
-
+import React, {useState, useEffect} from 'react';
 
 export default () => {
 
+
     const [check, setCheck] = useState(-1);
+    const [arr, setArr] = useState([]);
 
 
     let handleChange = (i) => {
-        setCheck(i);
+        let array = [ ...arr];
+        if (!arr.includes(i)) {
+            array.push(i);
+        } else {
+            array = array.filter(item => item != i)
+        }
+        setArr(array);
     };
+
+
 
     const renderMessages = (item, i) => (
         <div className="content-messages__item" onClick={() => handleChange(i)}>
             <div className="content-messages__main">
                 <div className="author">
-                    <i className={i == check ? 'fas fa-check-square' : 'far fa-square'}></i>
+                    <i className={arr.includes(i)  ? 'fas fa-check-square' : 'far fa-square'}></i>
                     <i className="far fa-star"></i>
                     <span>{item.author}</span>
                 </div>
@@ -36,11 +44,9 @@ export default () => {
 
     return (
         <div className="row">
-
             {
                 messages.map((item, i) => renderMessages(item, i))
             }
-
         </div>
     )
 }
