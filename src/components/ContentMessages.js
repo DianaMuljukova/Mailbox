@@ -3,8 +3,9 @@ import React, {useState, useEffect} from 'react';
 export default () => {
 
 
-    const [check, setCheck] = useState(-1);
+    const [checkArr, setCheck] = useState([]);
     const [arr, setArr] = useState([]);
+    const [trash, setTrash] = useState(false)
 
 
     let handleChange = (i) => {
@@ -17,14 +18,26 @@ export default () => {
         setArr(array);
     };
 
+    let handleHighlight = (i) => {
+        let array1 = [ ...checkArr];
+        if (!array1.includes(i)) {
+            array1.push(i);
+        } else {
+            array1 = array1.filter(item => item != i)
+        }
+        setCheck(array1);
+    };
 
+    let handleMouseOver = (i) => {
+        setTrash(!trash)
+    };
 
     const renderMessages = (item, i) => (
-        <div className="content-messages__item" onClick={() => handleChange(i)}>
+        <div className="content-messages__item" onMouseOver={() => handleMouseOver(i)}>
             <div className="content-messages__main">
                 <div className="author">
-                    <i className={arr.includes(i)  ? 'fas fa-check-square' : 'far fa-square'}></i>
-                    <i className="far fa-star"></i>
+                    <i className={arr.includes(i)  ? 'fas fa-check-square' : 'far fa-square'} onClick={() => handleChange(i)}></i>
+                    <i className="far fa-star" onClick={() => handleHighlight(i)} style={{color: checkArr.includes(i) ? '#F7B71D' : ''}}></i>
                     <span>{item.author}</span>
                 </div>
 
@@ -36,6 +49,9 @@ export default () => {
             </div>
 
             <div>
+                {
+                    trash ?  <i className="fas fa-trash"></i> : null
+                }
                 <span>{item.data}</span>
             </div>
         </div>

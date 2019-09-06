@@ -110,14 +110,25 @@
     padding: 10px;
     align-items: center;
     border-bottom: 1px solid rgba(16, 65, 87, 0.08);
+    height: 49px;
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
 
     &:hover {
       cursor: pointer;
-      background-color: darken(#ECEFF1, 10%);
+      background-color: darken(#ECEFF1, 5%);
+      box-shadow: 3px 3px 3px #cccccc;
+      box-sizing: border-box;
+      z-index: 10;
+      border-color: #cccccc;
     }
 
     &:first-child {
       border-top: 2px solid rgba(16, 65, 87, 0.08);
+      border-bottom: 1px solid transparent;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
     }
 
     .author {
@@ -126,9 +137,8 @@
       width: 190px;
       font-weight: 500;
 
-
       i {
-        margin: 5px 10px;
+        padding: 5px 10px;
         font-size: 20px;
         color: #9E9E9E;
       }
