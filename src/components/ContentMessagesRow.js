@@ -5,7 +5,7 @@ export default ({arr}) => {
         <div className="row content-messages__row">
             <div className="content-messages__categories">
                 {
-                    arr.map(item => renderCategories(item))
+                    arr.map(item => <Categories item={item} key={item.link}/>)
                 }
             </div>
 
@@ -15,8 +15,8 @@ export default ({arr}) => {
     )
 }
 
-const renderCategories = (item) => (
-    <a href={item.link}>
+const Categories = ({item}) => (
+    <a href={item.link} className={item.className + ' categories__link ' + item.default }>
         <i className={item.icon}></i><span>{item.text}</span>
     </a>
-)
+);

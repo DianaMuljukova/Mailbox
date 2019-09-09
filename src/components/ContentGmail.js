@@ -15,30 +15,40 @@ export default () => {
 
 const mailCategories = [
     {
+        className: 'blue',
         icon: 'far fa-folder',
         text: 'Primary',
-        link: '#'
+        link: '#',
+        default: 'active'
 
     },
     {
+        className: 'red',
         icon: 'fas fa-user-friends',
         text: 'Social',
-        link: '#'
+        link: '#',
+        default: 'notactive'
     },
     {
+        className: 'yellow',
         icon: 'fas fa-percent',
         text: 'Promotions',
-        link: '#'
+        link: '#',
+        default: 'notactive'
     },
     {
+        className: 'green',
         icon: 'fas fa-info-circle',
         text: 'Updates',
-        link: '#'
+        link: '#',
+        default: 'notactive'
     },
     {
+        className: 'pink',
         icon: 'fas fa-ban',
         text: 'Spam',
-        link: '#'
+        link: '#',
+        default: 'notactive'
     }
 ];
 

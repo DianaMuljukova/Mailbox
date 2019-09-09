@@ -77,14 +77,13 @@
     a {
       display: block;
       padding: 10px;
-      background-color: #ECEFF1;
+      //background-color: #ECEFF1;
       border: 1px solid rgba(16, 65, 87, 0.08);
       transition: 0.3s;
+      box-sizing: border-box;
 
       &:hover {
-        padding-top: 6px;
-        border-top: 5px solid blue;
-        font-weight: 500;
+        background-color: #ECEFF1;
         color: black;
       }
     }
@@ -93,8 +92,59 @@
   &__categories {
     display: flex;
 
-    a {
+    .categories__link {
       padding: 10px 35px 10px 15px;
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 90%;
+        height: 5px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &.active {
+        background-color: #ECEFF1;
+        &:before {
+          background-color: blue;
+        }
+      }
+
+
+
+
+      &.blue:hover {
+        &:before {
+          background-color: blue;
+        }
+      }
+
+      &.red:hover {
+        &:before {
+          background-color: red;
+        }
+      }
+
+      &.yellow:hover {
+        &:before {
+          background-color: yellow;
+        }
+      }
+
+      &.green:hover {
+        &:before {
+          background-color: green;
+        }
+      }
+
+      &.pink:hover {
+        &:before {
+          background-color: pink;
+        }
+      }
     }
 
     i {
@@ -114,14 +164,29 @@
     border-top: 1px solid transparent;
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
+    transition: 0.3s;
+    box-sizing: border-box;
 
     &:hover {
       cursor: pointer;
       background-color: darken(#ECEFF1, 5%);
       box-shadow: 3px 3px 3px #cccccc;
       box-sizing: border-box;
-      z-index: 10;
+      z-index: 20;
       border-color: #cccccc;
+
+      .trash-hover {
+        display: block;
+        transition: 0.3s;
+        color: #8e8b8b;
+        padding: 10px;
+
+        &:hover {
+          color: black;
+          background-color: #ccc8c8;
+          border-radius: 60%;
+        }
+      }
     }
 
     &:first-child {
@@ -152,6 +217,7 @@
       display: flex;
       align-items: center;
       margin-left: 20px;
+      width: 450px;
 
       i {
         font-size: 5px;
@@ -164,9 +230,20 @@
         }
       }
     }
+
+    .data {
+      width: 60px;
+    }
   }
 }
 
 .content-messages__main {
   display: flex;
+  align-items: center;
+}
+
+.trash-hover {
+  display: none;
+  margin-left: 10px;
+
 }

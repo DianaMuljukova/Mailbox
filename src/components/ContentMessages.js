@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import HoverTrash from "./HoverTrash";
 
 export default () => {
 
 
     const [checkArr, setCheck] = useState([]);
     const [arr, setArr] = useState([]);
-    const [trash, setTrash] = useState(false)
-
 
     let handleChange = (i) => {
         let array = [ ...arr];
@@ -28,12 +27,9 @@ export default () => {
         setCheck(array1);
     };
 
-    let handleMouseOver = (i) => {
-        setTrash(!trash)
-    };
 
     const renderMessages = (item, i) => (
-        <div className="content-messages__item" onMouseOver={() => handleMouseOver(i)}>
+        <div className="content-messages__item">
             <div className="content-messages__main">
                 <div className="author">
                     <i className={arr.includes(i)  ? 'fas fa-check-square' : 'far fa-square'} onClick={() => handleChange(i)}></i>
@@ -46,12 +42,11 @@ export default () => {
                     <i className="fas fa-circle"></i>
                     <span>{item.text}</span>
                 </div>
+
+                    <HoverTrash />
             </div>
 
-            <div>
-                {
-                    trash ?  <i className="fas fa-trash"></i> : null
-                }
+            <div className="data">
                 <span>{item.data}</span>
             </div>
         </div>
