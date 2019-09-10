@@ -1,8 +1,8 @@
 import React from 'react';
 
-const HoverTrash = () => (
+const HoverTrash = props => (
     <div className="trash-hover">
-        <i className="fas fa-trash"></i>
+        <i className="fas fa-trash" onClick={props.deleteMessage}></i>
     </div>
 );
 

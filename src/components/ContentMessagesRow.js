@@ -1,11 +1,12 @@
 import React from 'react';
 
-export default ({arr}) => {
+
+export default (props) => {
     return (
         <div className="row content-messages__row">
             <div className="content-messages__categories">
                 {
-                    arr.map(item => <Categories item={item} key={item.link}/>)
+                    props.arr.map((item, i) => <Categories item={item} key={i} index={i} changeCategories={props.changeCategories} />)
                 }
             </div>
 
@@ -15,8 +16,8 @@ export default ({arr}) => {
     )
 }
 
-const Categories = ({item}) => (
-    <a href={item.link} className={item.className + ' categories__link ' + item.default }>
-        <i className={item.icon}></i><span>{item.text}</span>
+const Categories = (props) => (
+    <a href={props.item.link} className={props.item.className + ' categories__link ' + props.item.default } onClick={() => props.changeCategories(props.index)}>
+        <i className={props.item.icon}></i><span>{props.item.text}</span>
     </a>
 );
