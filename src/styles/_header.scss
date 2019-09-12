@@ -11,8 +11,14 @@
 
   &__button {
     display: block;
-    padding: 10px;
+    padding: 10px 15px;
     margin-right: 24px;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: darken(#ECEFF1, 10%);
+    }
+
   }
 
   &__main {

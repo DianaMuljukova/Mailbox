@@ -1,72 +1,85 @@
 import React, {useState, useEffect, Component} from 'react';
 import HoverTrash from "./HoverTrash";
+import {NavLink} from 'react-router-dom';
 
 export default class ContentMessages extends Component {
     constructor (props){
         super(props);
         this.state = {
+            activeClassArr: [],
             messages: [
                 {
+                    id: 1,
                     author: 'Salit Kolla',
                     theme: 'Invitation',
                     text: 'Dribbble Meetup @ Somewhere, Sun Jan 5',
                     data: '7:29 pm'
                 },
                 {
+                    id: 2,
                     author: 'Lindsay Cortier',
                     theme: 'Your UI kit',
                     text: 'Hey Roman, thanks for your product!',
                     data: '6:11 pm'
                 },
                 {
+                    id: 3,
                     author: 'Tim Green',
                     theme: 'Prototype faster',
                     text: 'Just downloaded your design kit. Awesome',
                     data: '5:54 pm'
                 },
                 {
+                    id: 4,
                     author: 'Salit Kolla',
                     theme: 'Just purchased design system',
                     text: 'Wow boost of my UI workflow',
                     data: 'May 29'
                 },
                 {
+                    id: 5,
                     author: 'Peter Harrinson',
                     theme: 'User’s feedback',
                     text: 'Purchased your design system. Thanks',
                     data: 'May 28'
                 },
                 {
+                    id: 6,
                     author: 'Keri, me (2)',
                     theme: 'Your UI kit',
                     text: 'Hey Roman, thanks for your product!',
                     data: 'May 27'
                 },
                 {
+                    id: 7,
                     author: 'Michael Pottser',
                     theme: 'Prototype faster',
                     text: 'Just downloaded your design kit. Awesome',
                     data: 'May 27'
                 },
                 {
+                    id: 8,
                     author: 'Salit Kolla',
                     theme: 'Just purchased design system',
                     text: 'Wow boost of my UI workflow',
                     data: 'May 26'
                 },
                 {
+                    id: 9,
                     author: 'Lindsay Cortier',
                     theme: 'User’s feedback',
                     text: 'Purchased your design system. Thanks',
                     data: 'May 25'
                 },
                 {
+                    id: 10,
                     author: 'Tim Green',
                     theme: 'Your UI kit',
                     text: 'Hey Roman, thanks for your product!',
                     data: 'May 24'
                 },
                 {
+                    id: 11,
                     author: 'Salit Kolla',
                     theme: 'Prototype faster',
                     text: 'Just downloaded your design kit. Awesome',
@@ -74,41 +87,48 @@ export default class ContentMessages extends Component {
                 },
             ],
             checkArr: [],
-            arr: []
+            favoriteArr: []
         }
     }
 
     render() {
-        let handleChange = (i) => {
-            let array = [ ...this.state.arr];
-            if (!this.state.arr.includes(i)) {
-                array.push(i);
+        let handleChange = (id, i) => {
+            let newCheckArray = [ ...this.state.checkArr];
+            if (!this.state.checkArr.includes(id)) {
+                newCheckArray.push(id);
             } else {
-                array = array.filter(item => item != i)
+                newCheckArray = newCheckArray.filter(item => item != id)
+            }
+            let newActiveClassArr = [ ...this.state.activeClassArr];
+            if (!this.state.activeClassArr.includes(id)) {
+                newActiveClassArr.push(id);
+            } else {
+                newActiveClassArr = newActiveClassArr.filter(item => item != id)
             }
             this.setState({
-                arr: array
+                checkArr: newCheckArray,
+                activeClassArr: newActiveClassArr
             })
         };
 
-        let handleHighlight = (i) => {
-            let array1 = [ ...this.state.checkArr];
-            if (!array1.includes(i)) {
-                array1.push(i);
+        let handleHighlight = (id, i) => {
+            let newFavoriteArr = [ ...this.state.favoriteArr];
+            if (!newFavoriteArr.includes(id)) {
+                newFavoriteArr.push(id);
             } else {
-                array1 = array1.filter(item => item != i)
+                newFavoriteArr = newFavoriteArr.filter(item => item != id)
             }
             this.setState({
-                checkArr: array1
+                favoriteArr: newFavoriteArr
             })
         };
 
         const renderMessages = (item, i) => (
-            <div className="content-messages__item">
+            <div className={this.state.activeClassArr.includes(item.id) ? 'content-messages__item active' : 'content-messages__item'}>
                 <div className="content-messages__main">
                     <div className="author">
-                        <i className={this.state.arr.includes(i)  ? 'fas fa-check-square' : 'far fa-square'} onClick={() => handleChange(i)}></i>
-                        <i className="far fa-star" onClick={() => handleHighlight(i)} style={{color: this.state.checkArr.includes(i) ? '#F7B71D' : ''}}></i>
+                        <i className={this.state.checkArr.includes(item.id)  ? 'fas fa-check-square' : 'far fa-square'} onClick={() => handleChange(item.id, i)}></i>
+                        <i className="far fa-star" onClick={() => handleHighlight(item.id, i)} style={{color: this.state.favoriteArr.includes(item.id) ? '#F7B71D' : ''}}></i>
                         <span>{item.author}</span>
                     </div>
 
@@ -118,7 +138,7 @@ export default class ContentMessages extends Component {
                         <span>{item.text}</span>
                     </div>
 
-                    <HoverTrash deleteMessage={() => deleteMessages(i)} />
+                    <HoverTrash deleteMessage={() => deleteMessages(item.id, i)} />
                 </div>
 
                 <div className="data">
@@ -127,17 +147,22 @@ export default class ContentMessages extends Component {
             </div>
         );
 
-        const deleteMessages = (i) => {
-            this.state.messages.splice(i, 1);
-            let mass = [ ...this.state.arr];
-            let mass1 = [ ...this.state.checkArr];
-            mass.pop();
-            mass1.pop();
+        const deleteMessages = (id, i) => {
+            let newMessagesArr = this.state.messages;
+            newMessagesArr = newMessagesArr.filter(item => item.id != id);
+
+
+            let checkArrDelete = this.state.checkArr;
+            checkArrDelete = checkArrDelete.filter(item => item.id != id);
+
+            let favoriteArrDelete = this.state.favoriteArr;
+            favoriteArrDelete = favoriteArrDelete.filter(item => item.id != id);
+
             this.setState({
-                messages: this.state.messages,
-                arr: mass,
-                checkArr: mass1
-            })
+                messages: newMessagesArr,
+                checkArr: checkArrDelete,
+                favoriteArr: favoriteArrDelete
+            });
         };
 
         return (
@@ -150,69 +175,6 @@ export default class ContentMessages extends Component {
     }
 }
 
-// export default () => {
-//
-//
-//     // const [checkArr, setCheck] = useState([]);
-//     // const [arr, setArr] = useState([]);
-//
-//     let handleChange = (i) => {
-//         let array = [ ...arr];
-//         if (!arr.includes(i)) {
-//             array.push(i);
-//         } else {
-//             array = array.filter(item => item != i)
-//         }
-//         setArr(array);
-//     };
-//
-//     let handleHighlight = (i) => {
-//         let array1 = [ ...checkArr];
-//         if (!array1.includes(i)) {
-//             array1.push(i);
-//         } else {
-//             array1 = array1.filter(item => item != i)
-//         }
-//         setCheck(array1);
-//     };
-//
-//
-//     const renderMessages = (item, i) => (
-//         <div className="content-messages__item">
-//             <div className="content-messages__main">
-//                 <div className="author">
-//                     <i className={arr.includes(i)  ? 'fas fa-check-square' : 'far fa-square'} onClick={() => handleChange(i)}></i>
-//                     <i className="far fa-star" onClick={() => handleHighlight(i)} style={{color: checkArr.includes(i) ? '#F7B71D' : ''}}></i>
-//                     <span>{item.author}</span>
-//                 </div>
-//
-//                 <div className="text">
-//                     <span>{item.theme}</span>
-//                     <i className="fas fa-circle"></i>
-//                     <span>{item.text}</span>
-//                 </div>
-//
-//                     <HoverTrash deleteMessage={() => deleteMessages(i)} />
-//             </div>
-//
-//             <div className="data">
-//                 <span>{item.data}</span>
-//             </div>
-//         </div>
-//     );
-//
-//     const deleteMessages = (i) => {
-//         messages.splice(i, 1);
-//     };
-//
-//     return (
-//         <div className="row">
-//             {
-//                 messages.map((item, i) => renderMessages(item, i))
-//             }
-//         </div>
-//     )
-// }
 
 
 

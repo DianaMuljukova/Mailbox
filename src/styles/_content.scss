@@ -226,7 +226,6 @@
 
     &:first-child {
       border-top: 2px solid rgba(16, 65, 87, 0.08);
-      border-bottom: 1px solid transparent;
       border-left: 1px solid transparent;
       border-right: 1px solid transparent;
     }
@@ -268,6 +267,10 @@
 
     .data {
       width: 60px;
+    }
+
+    &.active {
+      background-color: darken(#ECEFF1, 5%);
     }
   }
 }

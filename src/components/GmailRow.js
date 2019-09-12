@@ -5,7 +5,7 @@ const GmailRow = () => {
         <section className="gmail-row">
             <div className="container">
                 <div className="row" style={{justifyContent: 'space-between'}}>
-                    <div className="col-xl-5 gmail-row__left">
+                    <div className="col-xl-3 gmail-row__left">
                         <div className="gmail-row__title">
                             <span>Gmail</span>
                             <a href="" className="gmail-row__title__sort">
@@ -13,14 +13,17 @@ const GmailRow = () => {
                             </a>
                         </div>
 
+
+                    </div>
+                    <div className="col-xl-9 gmail-row__right">
                         <div className="gmail-row__config">
                             <a href="#" className="square link link-left">
-                                    <a href="">
-                                        <i className="far fa-square"></i>
-                                    </a>
-                                    <a href="">
-                                        <i className="fas fa-sort-down"></i>
-                                    </a>
+                                <a href="">
+                                    <i className="far fa-square"></i>
+                                </a>
+                                <a href="">
+                                    <i className="fas fa-sort-down"></i>
+                                </a>
                             </a>
                             <a href="#" className="sort-down link">
                                 <i className="fas fa-spinner"></i>
@@ -29,8 +32,6 @@ const GmailRow = () => {
                                 <i className="fas fa-ellipsis-v"></i>
                             </a>
                         </div>
-                    </div>
-                    <div className="col-xl-5 gmail-row__right">
                         <div className="gmail-row__config">
                             <a href="#" className="square link">
                                 <i className="fas fa-chevron-left"></i>
