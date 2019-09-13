@@ -43,11 +43,17 @@ export default class ContentGmail extends Component {
                     link: '#',
                     default: 'notactive'
                 }
-            ]
+            ],
+            categoryName: {
+                isSocial: false,
+                isPromotions: false,
+                isUpdates: false,
+                isPrimary: 'primary'
+            }
         }
     }
 
-    changeCategories = (i) => {
+    changeCategories = (i, categoryText) => {
 
         let categoriesArr = this.state.mailCategories;
         categoriesArr.map(item => {
@@ -55,11 +61,50 @@ export default class ContentGmail extends Component {
                 item.default = 'notactive';
             }
         });
-
         categoriesArr[i].default = 'active';
+
+
+        if (categoryText == 'Social') {
+            this.setState({
+                categoryName: {
+                    isSocial: 'social',
+                    isPromotions: false,
+                    isUpdates: false,
+                    isPrimary: false
+                }
+            })
+        } else if (categoryText == 'Promotions') {
+            this.setState({
+                categoryName: {
+                    isSocial: false,
+                    isPromotions: 'promotions',
+                    isUpdates: false,
+                    isPrimary: false
+                }
+            })
+        } else if (categoryText == 'Updates') {
+            this.setState({
+                categoryName: {
+                    isSocial: false,
+                    isPromotions: false,
+                    isUpdates: 'updates',
+                    isPrimary: false
+                }
+            })
+        } else if (categoryText == 'Primary') {
+            this.setState({
+                categoryName: {
+                    isSocial: false,
+                    isPromotions: false,
+                    isUpdates: false,
+                    isPrimary: 'primary'
+                }
+            })
+        }
+
         this.setState({
             mailCategories: categoriesArr
-        })
+        });
     };
 
     render() {
@@ -68,8 +113,11 @@ export default class ContentGmail extends Component {
                 <ContentMessagesRow
                     arr={this.state.mailCategories}
                     changeCategories={this.changeCategories}
+                    categoryName={this.state.categoryName}
                 />
-                <ContentMessages/>
+                <ContentMessages
+                    categoryName={this.state.categoryName}
+                />
             </div>
         )
     }

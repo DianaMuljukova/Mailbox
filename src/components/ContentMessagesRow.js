@@ -6,7 +6,7 @@ export default (props) => {
         <div className="row content-messages__row">
             <div className="content-messages__categories">
                 {
-                    props.arr.map((item, i) => <Categories item={item} key={i} index={i} changeCategories={props.changeCategories} />)
+                    props.arr.map((item, i) => <Categories item={item} key={i} index={i} categoryName={props.categoryName} changeCategories={props.changeCategories} />)
                 }
             </div>
 
@@ -17,7 +17,7 @@ export default (props) => {
 }
 
 const Categories = (props) => (
-    <a href={props.item.link} className={props.item.className + ' categories__link ' + props.item.default } onClick={() => props.changeCategories(props.index)}>
+    <a href={props.item.link} className={props.item.className + ' categories__link ' + props.item.default } onClick={() => props.changeCategories(props.index, props.item.text)}>
         <i className={props.item.icon}></i><span>{props.item.text}</span>
     </a>
 );

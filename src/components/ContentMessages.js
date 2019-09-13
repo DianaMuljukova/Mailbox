@@ -13,77 +13,88 @@ export default class ContentMessages extends Component {
                     author: 'Salit Kolla',
                     theme: 'Invitation',
                     text: 'Dribbble Meetup @ Somewhere, Sun Jan 5',
-                    data: '7:29 pm'
+                    data: '7:29 pm',
+                    type: 'promotions'
                 },
                 {
                     id: 2,
                     author: 'Lindsay Cortier',
                     theme: 'Your UI kit',
                     text: 'Hey Roman, thanks for your product!',
-                    data: '6:11 pm'
+                    data: '6:11 pm',
+                    type: 'social'
                 },
                 {
                     id: 3,
                     author: 'Tim Green',
                     theme: 'Prototype faster',
                     text: 'Just downloaded your design kit. Awesome',
-                    data: '5:54 pm'
+                    data: '5:54 pm',
+                    type: 'promotions'
                 },
                 {
                     id: 4,
                     author: 'Salit Kolla',
                     theme: 'Just purchased design system',
                     text: 'Wow boost of my UI workflow',
-                    data: 'May 29'
+                    data: 'May 29',
+                    type: 'updates'
                 },
                 {
                     id: 5,
                     author: 'Peter Harrinson',
                     theme: 'User’s feedback',
                     text: 'Purchased your design system. Thanks',
-                    data: 'May 28'
+                    data: 'May 28',
+                    type: 'updates'
                 },
                 {
                     id: 6,
                     author: 'Keri, me (2)',
                     theme: 'Your UI kit',
                     text: 'Hey Roman, thanks for your product!',
-                    data: 'May 27'
+                    data: 'May 27',
+                    type: 'promotions'
                 },
                 {
                     id: 7,
                     author: 'Michael Pottser',
                     theme: 'Prototype faster',
                     text: 'Just downloaded your design kit. Awesome',
-                    data: 'May 27'
+                    data: 'May 27',
+                    type: 'social'
                 },
                 {
                     id: 8,
                     author: 'Salit Kolla',
                     theme: 'Just purchased design system',
                     text: 'Wow boost of my UI workflow',
-                    data: 'May 26'
+                    data: 'May 26',
+                    type: 'social'
                 },
                 {
                     id: 9,
                     author: 'Lindsay Cortier',
                     theme: 'User’s feedback',
                     text: 'Purchased your design system. Thanks',
-                    data: 'May 25'
+                    data: 'May 25',
+                    type: 'promotions'
                 },
                 {
                     id: 10,
                     author: 'Tim Green',
                     theme: 'Your UI kit',
                     text: 'Hey Roman, thanks for your product!',
-                    data: 'May 24'
+                    data: 'May 24',
+                    type: 'updates'
                 },
                 {
                     id: 11,
                     author: 'Salit Kolla',
                     theme: 'Prototype faster',
                     text: 'Just downloaded your design kit. Awesome',
-                    data: 'May 21'
+                    data: 'May 21',
+                    type: 'social'
                 },
             ],
             checkArr: [],
@@ -122,6 +133,9 @@ export default class ContentMessages extends Component {
                 favoriteArr: newFavoriteArr
             })
         };
+
+        //console.log(this.props.categoryName);
+
 
         const renderMessages = (item, i) => (
             <div className={this.state.activeClassArr.includes(item.id) ? 'content-messages__item active' : 'content-messages__item'}>
@@ -168,7 +182,11 @@ export default class ContentMessages extends Component {
         return (
             <div className="row">
                 {
-                    this.state.messages.map((item, i) => renderMessages(item, i))
+                    //console.log(this.state.messages[1].type)
+                    //this.state.messages.type == this.props.categoryName.isSocial ? alert(454) : null
+                    this.state.messages.map((item, i) => this.state.messages[i].type ==  this.props.categoryName.isSocial ? renderMessages(item, i) :
+                        this.state.messages[i].type ==  this.props.categoryName.isPromotions ? renderMessages(item, i) :
+                            this.state.messages[i].type ==  this.props.categoryName.isUpdates ? renderMessages(item, i) : this.props.categoryName.isPrimary ? renderMessages(item, i) : null)
                 }
             </div>
         )
