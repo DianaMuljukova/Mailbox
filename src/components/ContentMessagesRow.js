@@ -6,7 +6,9 @@ export default (props) => {
         <div className="row content-messages__row">
             <div className="content-messages__categories">
                 {
-                    props.arr.map((item, i) => <Categories item={item} key={i} index={i} categoryName={props.categoryName} changeCategories={props.changeCategories} />)
+                    mailCategories.map((item, i) => <Categories item={item} key={i} index={i}
+                                                           categoryName={props.categoryName}
+                                                           changeCategories={props.changeCategories}/>)
                 }
             </div>
 
@@ -16,8 +18,46 @@ export default (props) => {
     )
 }
 
+const mailCategories = [
+    {
+        className: 'blue',
+        icon: 'far fa-folder',
+        text: 'Primary',
+        link: '#'
+
+    },
+    {
+        className: 'green',
+        icon: 'fas fa-user-friends',
+        text: 'Social',
+        link: '#'
+    },
+    {
+        className: 'yellow',
+        icon: 'fas fa-percent',
+        text: 'Promotions',
+        link: '#'
+    },
+    {
+        className: 'purple',
+        icon: 'fas fa-info-circle',
+        text: 'Updates',
+        link: '#'
+    },
+    {
+        className: 'red',
+        icon: 'fas fa-ban',
+        text: 'Spam',
+        link: '#'
+    }
+];
+
 const Categories = (props) => (
-    <a href={props.item.link} className={props.item.className + ' categories__link ' + props.item.default } onClick={() => props.changeCategories(props.index, props.item.text)}>
+    <a
+        href={props.item.link}
+        className={`${props.item.className} categories__link ${props.item.text.toLowerCase() === props.categoryName ? 'active' : ''}`}
+        onClick={() => props.changeCategories(props.index, props.item.text)}
+    >
         <i className={props.item.icon}></i><span>{props.item.text}</span>
     </a>
 );

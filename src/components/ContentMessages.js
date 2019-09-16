@@ -96,97 +96,116 @@ export default class ContentMessages extends Component {
                     data: 'May 21',
                     type: 'social'
                 },
+                {
+                    id: 12,
+                    author: 'Mister X',
+                    theme: 'XXX',
+                    text: 'Just XXX',
+                    data: 'May 21',
+                    type: 'spam'
+                },
+                {
+                    id: 13,
+                    author: 'Miss X',
+                    theme: 'XXX',
+                    text: 'Just XXX',
+                    data: 'May 21',
+                    type: 'spam'
+                },
+                {
+                    id: 14,
+                    author: 'Work',
+                    theme: 'Work',
+                    text: 'Just downloaded your design kit. Awesome',
+                    data: 'Sept 21',
+                    type: 'spam'
+                },
             ],
             checkArr: [],
             favoriteArr: []
         }
     }
 
-    render() {
-        let handleChange = (id, i) => {
-            let newCheckArray = [ ...this.state.checkArr];
-            if (!this.state.checkArr.includes(id)) {
-                newCheckArray.push(id);
-            } else {
-                newCheckArray = newCheckArray.filter(item => item != id)
-            }
-            let newActiveClassArr = [ ...this.state.activeClassArr];
-            if (!this.state.activeClassArr.includes(id)) {
-                newActiveClassArr.push(id);
-            } else {
-                newActiveClassArr = newActiveClassArr.filter(item => item != id)
-            }
-            this.setState({
-                checkArr: newCheckArray,
-                activeClassArr: newActiveClassArr
-            })
-        };
+    handleChange = (id, i) => {
+        let newCheckArray = [ ...this.state.checkArr];
+        if (!this.state.checkArr.includes(id)) {
+            newCheckArray.push(id);
+        } else {
+            newCheckArray = newCheckArray.filter(item => item != id)
+        }
+        let newActiveClassArr = [ ...this.state.activeClassArr];
+        if (!this.state.activeClassArr.includes(id)) {
+            newActiveClassArr.push(id);
+        } else {
+            newActiveClassArr = newActiveClassArr.filter(item => item != id)
+        }
+        this.setState({
+            checkArr: newCheckArray,
+            activeClassArr: newActiveClassArr
+        })
+    };
 
-        let handleHighlight = (id, i) => {
-            let newFavoriteArr = [ ...this.state.favoriteArr];
-            if (!newFavoriteArr.includes(id)) {
-                newFavoriteArr.push(id);
-            } else {
-                newFavoriteArr = newFavoriteArr.filter(item => item != id)
-            }
-            this.setState({
-                favoriteArr: newFavoriteArr
-            })
-        };
+    handleHighlight = (id, i) => {
+        let newFavoriteArr = [ ...this.state.favoriteArr];
+        if (!newFavoriteArr.includes(id)) {
+            newFavoriteArr.push(id);
+        } else {
+            newFavoriteArr = newFavoriteArr.filter(item => item != id)
+        }
+        this.setState({
+            favoriteArr: newFavoriteArr
+        })
+    };
 
-        //console.log(this.props.categoryName);
-
-
-        const renderMessages = (item, i) => (
-            <div className={this.state.activeClassArr.includes(item.id) ? 'content-messages__item active' : 'content-messages__item'}>
-                <div className="content-messages__main">
-                    <div className="author">
-                        <i className={this.state.checkArr.includes(item.id)  ? 'fas fa-check-square' : 'far fa-square'} onClick={() => handleChange(item.id, i)}></i>
-                        <i className="far fa-star" onClick={() => handleHighlight(item.id, i)} style={{color: this.state.favoriteArr.includes(item.id) ? '#F7B71D' : ''}}></i>
-                        <span>{item.author}</span>
-                    </div>
-
-                    <div className="text">
-                        <span>{item.theme}</span>
-                        <i className="fas fa-circle"></i>
-                        <span>{item.text}</span>
-                    </div>
-
-                    <HoverTrash deleteMessage={() => deleteMessages(item.id, i)} />
+    renderMessages = (item, i) => (
+        <div className={this.state.activeClassArr.includes(item.id) ? 'content-messages__item active' : 'content-messages__item'}>
+            <div className="content-messages__main">
+                <div className="author">
+                    <i className={this.state.checkArr.includes(item.id)  ? 'fas fa-check-square' : 'far fa-square'} onClick={() => this.handleChange(item.id, i)}></i>
+                    <i className="far fa-star" onClick={() => this.handleHighlight(item.id, i)} style={{color: this.state.favoriteArr.includes(item.id) ? '#F7B71D' : ''}}></i>
+                    <span>{item.author}</span>
                 </div>
 
-                <div className="data">
-                    <span>{item.data}</span>
+                <div className="text">
+                    <span>{item.theme}</span>
+                    <i className="fas fa-circle"></i>
+                    <span>{item.text}</span>
                 </div>
+
+                <HoverTrash deleteMessage={() => this.deleteMessages(item.id, i)} />
             </div>
-        );
 
-        const deleteMessages = (id, i) => {
-            let newMessagesArr = this.state.messages;
-            newMessagesArr = newMessagesArr.filter(item => item.id != id);
+            <div className="data">
+                <span>{item.data}</span>
+            </div>
+        </div>
+    );
+
+    deleteMessages = (id, i) => {
+        let newMessagesArr = this.state.messages;
+        newMessagesArr = newMessagesArr.filter(item => item.id != id);
 
 
-            let checkArrDelete = this.state.checkArr;
-            checkArrDelete = checkArrDelete.filter(item => item.id != id);
+        let checkArrDelete = this.state.checkArr;
+        checkArrDelete = checkArrDelete.filter(item => item.id != id);
 
-            let favoriteArrDelete = this.state.favoriteArr;
-            favoriteArrDelete = favoriteArrDelete.filter(item => item.id != id);
+        let favoriteArrDelete = this.state.favoriteArr;
+        favoriteArrDelete = favoriteArrDelete.filter(item => item.id != id);
 
-            this.setState({
-                messages: newMessagesArr,
-                checkArr: checkArrDelete,
-                favoriteArr: favoriteArrDelete
-            });
-        };
+        this.setState({
+            messages: newMessagesArr,
+            checkArr: checkArrDelete,
+            favoriteArr: favoriteArrDelete
+        });
+    };
 
+    render() {
         return (
             <div className="row">
                 {
-                    //console.log(this.state.messages[1].type)
-                    //this.state.messages.type == this.props.categoryName.isSocial ? alert(454) : null
-                    this.state.messages.map((item, i) => this.state.messages[i].type ==  this.props.categoryName.isSocial ? renderMessages(item, i) :
-                        this.state.messages[i].type ==  this.props.categoryName.isPromotions ? renderMessages(item, i) :
-                            this.state.messages[i].type ==  this.props.categoryName.isUpdates ? renderMessages(item, i) : this.props.categoryName.isPrimary ? renderMessages(item, i) : null)
+                    this.state.messages
+                        .filter(item => item.type == this.props.categoryName || this.props.categoryName == 'primary')
+                        .map((item, i) => this.renderMessages(item, i))
                 }
             </div>
         )
