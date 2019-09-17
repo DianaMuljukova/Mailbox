@@ -27,7 +27,9 @@ class Header extends Component {
                             <a href="" className="header__button" onClick={(e) => this.toggleMenu(e)}>
                                 <i className="fas fa-bars"></i>
                             </a>
-                            <span className="header__title">Mailbox</span>
+                            <NavLink className="header__title"
+                            to={'/'}
+                            >Mailbox</NavLink>
                             <HeaderInput />
                         </div>
 

@@ -3,7 +3,8 @@
 
   &__menu {
 
-    button {
+    .compose {
+      display: block;
       background-color: #FF5722;
       text-transform: uppercase;
       font-weight: 500;
