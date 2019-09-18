@@ -11,6 +11,7 @@ function App() {
         <>
             <Header />
             <GmailRow />
+
             <Route path={'/'} exact component={Content} />
             <Route path={'/compose'} component={Compose} />
         </>
