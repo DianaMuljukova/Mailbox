@@ -24,9 +24,9 @@ class Header extends Component {
                 <div className="container">
                     <div className="row header__row">
                         <div className="col-xl-6 header__main">
-                            <a href="" className="header__button" onClick={(e) => this.toggleMenu(e)}>
+                            <button className="header__button" onClick={(e) => this.toggleMenu(e)}>
                                 <i className="fas fa-bars"></i>
-                            </a>
+                            </button>
                             <NavLink className="header__title"
                             to={'/'}
                             >Mailbox</NavLink>
@@ -35,12 +35,12 @@ class Header extends Component {
 
                         <div className="col-xl-2 header__add">
                             <img src="/img/avatar.png" alt="" className="header__avatar" />
-                            <a href="" className="header__bell">
+                            <NavLink to={'#'} className="header__bell">
                                 <i className="fas fa-bell"></i>
-                            </a>
-                            <a href="" className="header__load">
+                            </NavLink>
+                            <NavLink to={'#'} className="header__load">
                                 <i className="fas fa-ellipsis-v"></i>
-                            </a>
+                            </NavLink>
                         </div>
                     </div>
                 </div>

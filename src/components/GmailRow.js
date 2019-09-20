@@ -1,6 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
+import DeleteMessages from "./DeleteMessages";
+import HighlightMessages from "./HiglightMessages";
 
 const GmailRow = () => {
+
+    const deleteSeveralMessages = e => {
+        console.log(e.target);
+    };
+
+    const chooseMessages = e => {
+        setChooseIsChecked(!chooseIsChecked)
+    };
+
+    const [chooseIsChecked, setChooseIsChecked] = useState(false);
+    const [highlightIsChecked, setHighlightIsChecked] = useState(false);
+
     return (
         <section className="gmail-row">
             <div className="container">
@@ -8,46 +22,47 @@ const GmailRow = () => {
                     <div className="col-xl-3 gmail-row__left">
                         <div className="gmail-row__title">
                             <span>Gmail</span>
-                            <a href="" className="gmail-row__title__sort">
-                                <i className="fas fa-sort-down"></i>
-                            </a>
+                            <i className="fas fa-sort-down"></i>
                         </div>
-
-
                     </div>
                     <div className="col-xl-9 gmail-row__right">
                         <div className="gmail-row__config">
-                            <a href="#" className="square link link-left">
-                                <a href="">
-                                    <i className="far fa-square"></i>
-                                </a>
-                                <a href="">
-                                    <i className="fas fa-sort-down"></i>
-                                </a>
-                            </a>
-                            <a href="#" className="sort-down link">
+                            <div className="square link link-left">
+                                <i
+                                    onClick={() => setHighlightIsChecked(!highlightIsChecked)}
+                                    className={highlightIsChecked ? 'fas fa-check-square' : 'far fa-square square'}></i>
+
+                                <i className="fas fa-sort-down" onClick={chooseMessages}></i>
+                                {
+                                    chooseIsChecked ?
+                                        <HighlightMessages /> :
+                                        null
+                                }
+                            </div>
+                            <div className="sort-down link">
                                 <i className="fas fa-spinner"></i>
-                            </a>
-                            <a href="#" className="link">
+                            </div>
+                            <div className="link">
                                 <i className="fas fa-ellipsis-v"></i>
-                            </a>
+                            </div>
+                            <DeleteMessages
+                                deleteSeveralMessages={deleteSeveralMessages}
+                            />
+
                         </div>
                         <div className="gmail-row__config">
-                            <a href="#" className="square link">
+                            <div className="square link">
                                 <i className="fas fa-chevron-left"></i>
-                            </a>
-                            <a href="#" className="sort-down link">
+                            </div>
+                            <div className="sort-down link">
                                 <i className="fas fa-chevron-right"></i>
-                            </a>
+                            </div>
 
-                            <a href="#" className="square link link-right">
-                                <a href="">
-                                    <i className="fas fa-cog"></i>
-                                </a>
-                                <a href="">
-                                    <i className="fas fa-sort-down"></i>
-                                </a>
-                            </a>
+                            <div className="square link link-right">
+                                <i className="fas fa-cog"></i>
+
+                                <i className="fas fa-sort-down"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

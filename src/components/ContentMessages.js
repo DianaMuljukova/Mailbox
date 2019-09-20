@@ -1,6 +1,5 @@
-import React, {useState, useEffect, Component} from 'react';
+import React, {Component} from 'react';
 import HoverTrash from "./HoverTrash";
-import {NavLink} from 'react-router-dom';
 
 export default class ContentMessages extends Component {
     constructor (props){
@@ -131,13 +130,13 @@ export default class ContentMessages extends Component {
         if (!this.state.checkArr.includes(id)) {
             newCheckArray.push(id);
         } else {
-            newCheckArray = newCheckArray.filter(item => item != id)
+            newCheckArray = newCheckArray.filter(item => item !== id)
         }
         let newActiveClassArr = [ ...this.state.activeClassArr];
         if (!this.state.activeClassArr.includes(id)) {
             newActiveClassArr.push(id);
         } else {
-            newActiveClassArr = newActiveClassArr.filter(item => item != id)
+            newActiveClassArr = newActiveClassArr.filter(item => item !== id)
         }
         this.setState({
             checkArr: newCheckArray,
@@ -150,7 +149,7 @@ export default class ContentMessages extends Component {
         if (!newFavoriteArr.includes(id)) {
             newFavoriteArr.push(id);
         } else {
-            newFavoriteArr = newFavoriteArr.filter(item => item != id)
+            newFavoriteArr = newFavoriteArr.filter(item => item !== id)
         }
         this.setState({
             favoriteArr: newFavoriteArr
@@ -158,7 +157,7 @@ export default class ContentMessages extends Component {
     };
 
     renderMessages = (item, i) => (
-        <div className={this.state.activeClassArr.includes(item.id) ? 'content-messages__item active' : 'content-messages__item'}>
+        <div key={i} className={this.state.activeClassArr.includes(item.id) ? 'content-messages__item active' : 'content-messages__item'}>
             <div className="content-messages__main">
                 <div className="author">
                     <i className={this.state.checkArr.includes(item.id)  ? 'fas fa-check-square' : 'far fa-square'} onClick={() => this.handleChange(item.id, i)}></i>
@@ -183,14 +182,14 @@ export default class ContentMessages extends Component {
 
     deleteMessages = (id, i) => {
         let newMessagesArr = this.state.messages;
-        newMessagesArr = newMessagesArr.filter(item => item.id != id);
+        newMessagesArr = newMessagesArr.filter(item => item.id !== id);
 
 
         let checkArrDelete = this.state.checkArr;
-        checkArrDelete = checkArrDelete.filter(item => item.id != id);
+        checkArrDelete = checkArrDelete.filter(item => item.id !== id);
 
         let favoriteArrDelete = this.state.favoriteArr;
-        favoriteArrDelete = favoriteArrDelete.filter(item => item.id != id);
+        favoriteArrDelete = favoriteArrDelete.filter(item => item.id !== id);
 
         this.setState({
             messages: newMessagesArr,
@@ -204,7 +203,7 @@ export default class ContentMessages extends Component {
             <div className="row">
                 {
                     this.state.messages
-                        .filter(item => item.type == this.props.categoryName || this.props.categoryName == 'primary')
+                        .filter(item => item.type === this.props.categoryName || this.props.categoryName === 'primary')
                         .map((item, i) => this.renderMessages(item, i))
                 }
             </div>

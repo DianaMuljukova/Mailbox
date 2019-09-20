@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 
 export default (props) => {
@@ -12,7 +13,7 @@ export default (props) => {
                 }
             </div>
 
-            <a href="#"><i className="fas fa-plus"></i></a>
+            <NavLink to={'#'}><i className="fas fa-plus"></i></NavLink>
 
         </div>
     )

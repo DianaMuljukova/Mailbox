@@ -7,6 +7,10 @@
     justify-content: space-between;
     align-items: center;
 
+    .fa-sort-down {
+      margin-left: 20px;
+      margin-top: -10%;
+    }
   }
 
   &__title {
@@ -43,14 +47,20 @@
       border-radius: 5px;
       border: 1px solid #9E9E9E;
 
+      &:hover {
+        background: darken(#ECEFF1, 10%);
+      }
 
+      &:hover i {
+        color: black;
+      }
 
       i {
         color: #9E9E9E;
         position: absolute;
       }
 
-      .fa-square {
+      .fa-square, .fa-check-square {
         top: 50%;
         left: 15%;
         transform: translateY(-50%);
@@ -60,9 +70,16 @@
         top: 40%;
         right: 15%;
         transform: translateY(-50%);
+        z-index: 30;
       }
 
       .fa-spinner {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .fa-trash {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -109,8 +126,30 @@
 }
 
 .link-left {
+  position: relative;
+
   &:first-child {
     width: 64px;
+  }
+
+  .highlight-messages {
+    position: absolute;
+    top: 80%;
+    left: 0;
+    background-color: white;
+    z-index: 20;
+    margin: 0;
+    padding: 10px 0 10px 0;
+    list-style: none;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.25);
+
+    li {
+      padding: 0 10px 10px 15px;
+      &:hover {
+        background: darken(#ECEFF1, 5%);
+        cursor: pointer;
+      }
+    }
   }
 }
 

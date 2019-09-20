@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ContentMenu from "./ContentMenu";
+//import ContentMenu from "./ContentMenu";
 import ToSend from "./ToSend";
 import {NavLink} from 'react-router-dom';
 import Input from "./Input";
@@ -29,14 +29,14 @@ export default class Compose extends Component {
         let value = e.target.value;
         isEmailValid = validateEmail(value);
         this.state.formControls.email.touched ?
-        this.setState({
-            formControls: {
-                email: {
-                    isEmailValid,
-                    touched: true
+            this.setState({
+                formControls: {
+                    email: {
+                        isEmailValid,
+                        touched: true
+                    }
                 }
-            }
-        }) : this.setState({
+            }) : this.setState({
                 formControls: {
                     email: {
                         isEmailValid,
@@ -48,43 +48,39 @@ export default class Compose extends Component {
 
     render() {
         return (
-            <section className="content">
-                <div className="container">
-                    <div className="row">
-                        <ContentMenu />
-                        <div className="col-xl-9 newMessage">
-                            <div className="newMessage__head">
-                                <div className="newMessage__conf">
-                                <ToSend />
-                                <span> от кого: </span>
-                                <img src="/img/avatar.png" alt="" className="header__avatar" />
-                                <span>{this.state.author}</span>
-                                </div>
-                                <div>
-                                    <NavLink to={'/'}>
-                                        <i className="fas fa-times"></i>
-                                    </NavLink>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <Input
-                                onChange={this.changeInput}
-                                isValid={this.state.formControls.email.isEmailValid}
-                                />
-                                <input type="text" className="newMessage__theme newMessage__input" placeholder="Тема" />
-                                <div className="newMessage__tools">
-                                    <i className="fas fa-paperclip"></i>
-                                    <i className="fas fa-bold"></i>
-                                    <i className="fas fa-italic"></i>
-                                </div>
-                                <textarea rows="20" autoFocus={true} />
-                                <ToSend />
-                            </div>
-
+            <div className="col-xl-9">
+                <div className="newMessage">
+                    <div className="newMessage__head">
+                        <div className="newMessage__conf">
+                            <ToSend />
+                            <span> от кого: </span>
+                            <img src="/img/avatar.png" alt="" className="header__avatar" />
+                            <span>{this.state.author}</span>
+                        </div>
+                        <div>
+                            <NavLink to={'/'}>
+                                <i className="fas fa-times"></i>
+                            </NavLink>
                         </div>
                     </div>
+                    <div className="row">
+                        <Input
+                            onChange={this.changeInput}
+                            isValid={this.state.formControls.email.isEmailValid}
+                        />
+                        <input type="text" className="newMessage__theme newMessage__input" placeholder="Тема" />
+                        <div className="newMessage__tools">
+                            <i className="fas fa-paperclip"></i>
+                            <i className="fas fa-bold"></i>
+                            <i className="fas fa-italic"></i>
+                        </div>
+                        <textarea rows="20" autoFocus={true} />
+                        <ToSend />
+                    </div>
+
                 </div>
-            </section>
+            </div>
+
         )
     }
 }
