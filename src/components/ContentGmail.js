@@ -19,7 +19,7 @@ export default class ContentGmail extends Component {
 
     render() {
         return (
-            <div className="col-xl-9">
+            <div className="col-xl-9 col-md-12">
                 <ContentMessagesRow
                     changeCategories={this.changeCategories}
                     categoryName={this.state.categoryName}

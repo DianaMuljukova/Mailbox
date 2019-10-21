@@ -3,6 +3,10 @@
 
   &__menu {
 
+    @include medium {
+      display: none;
+    }
+
     .compose {
       display: block;
       background-color: #FF5722;
@@ -15,7 +19,6 @@
       border-radius: 5px;
       width: 80%;
       display: flex;
-      //justify-content: center;
       margin: 0 auto;
 
       i {
@@ -75,6 +78,8 @@
     justify-content: space-between;
     margin-bottom: 16px;
 
+
+
     a {
       display: block;
       padding: 10px;
@@ -95,6 +100,10 @@
     .categories__link {
       padding: 10px 35px 10px 15px;
       position: relative;
+
+      @include medium {
+        padding: 10px 10px 10px 15px;
+      }
 
       &:before {
         content: '';
@@ -246,6 +255,10 @@
       margin-left: 20px;
       width: 450px;
 
+      @include medium {
+        width: 400px;
+      }
+
       i {
         font-size: 5px;
         margin: 0 5px;
@@ -254,6 +267,22 @@
       span {
         &:first-child {
           font-weight: 500;
+
+          @include medium {
+            text-overflow: ellipsis;
+            width: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+        }
+
+        &:last-child {
+          @include medium {
+            text-overflow: ellipsis;
+            width: 230px;
+            overflow: hidden;
+            white-space: nowrap;
+          }
         }
       }
     }
@@ -271,10 +300,13 @@
 .content-messages__main {
   display: flex;
   align-items: center;
+
+  @include medium {
+    width: 600px;
+  }
 }
 
 .trash-hover {
   display: none;
   margin-left: 7px;
-
 }
